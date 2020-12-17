@@ -1,0 +1,54 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+
+int FunctionA(int x)
+{
+    return x + 5;
+
+}
+int FunctionB(int x) 
+{
+   x= FunctionA(3) + x;
+    return x ; 
+
+}
+int FunctionC(int x) 
+{ 
+    x += FunctionB(1);
+    x += FunctionA(x);
+    return x;
+}
+int FunctionD(int x)
+{ 
+    return x; 
+}
+int FunctionE(int x) 
+{
+    return 0;
+}
+
+
+int main()
+{
+
+    FunctionC(10);
+
+    FunctionB(14);
+
+    for (int i = 0; i < 20; i++)
+    {
+         FunctionD(1);
+    }
+   
+    for (int i = 0; i < 50; i++)
+    {
+            FunctionE(1);
+    }
+
+    return 0;
+ 
+}

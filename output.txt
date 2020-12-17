@@ -1,0 +1,54 @@
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+ofstream f;
+
+int FunctionA(int x)
+{ f << " FunctionA Starts  " << endl ; 
+   f << " FunctionA Ends  " << endl ; return x + 5;
+
+}
+int FunctionB(int x) 
+{ f << " FunctionB Starts  " << endl ; 
+   x= FunctionA(3) + x;
+   f << " FunctionB Ends  " << endl ; return x ; 
+
+}
+int FunctionC(int x) 
+{ f << " FunctionC Starts  " << endl;  
+    x += FunctionB(1);
+    x += FunctionA(x);
+   f << " FunctionC Ends  " << endl; return x;
+}
+int FunctionD(int x)
+{ f << " FunctionD Starts  "<< endl ;  
+   f << " FunctionD Ends  "<< endl ; return x; 
+}
+int FunctionE(int x) 
+{ f << " FunctionE Starts  " << endl; 
+   f << " FunctionE Ends  " << endl; return 0;
+}
+
+
+int main()
+{ f.open("Log File.txt");  f << "Log File \n "; f << " Main Starts  " << endl; 
+
+    FunctionC(10);
+
+    FunctionB(14);
+
+    for (int i = 0; i < 20; i++)
+    {
+         FunctionD(1);
+    }
+   
+    for (int i = 0; i < 50; i++)
+    {
+            FunctionE(1);
+    }
+
+    f << " Main Ends  " << endl; f.close();return 0;
+ 
+}
